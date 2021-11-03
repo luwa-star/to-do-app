@@ -1,66 +1,303 @@
 .app {
     margin: 0;
-    /*to be changed*/
-    padding: 0rem 1rem;
-    width: 100vw;
+    /*width: 100vw;*/
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.todo-wrapper {
+    width: 100vw;
+    transition: 0.5s all ease;
+    min-height: 100vh;
+}
+
+button {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.125rem;
+    cursor: pointer;
 }
 
 .header-section {
-    background: url(./images/bg-mobile-light.jpg) no-repeat;
-    background-size: cover;
-    background-position: 50% 0;
-    width: 100vw;
-    height: 100vh;
-    padding: 2.3rem 1.5rem;
+    background: url(./images/bg-desktop-light.jpg) top no-repeat;
+    background-size: 100vw 40vh;
+    width: 100%;
+    height: 40vh;
+    padding: 4rem 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*background: linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));*/
+    transition: 0.5ms all ease;
+}
+
+.dark-header-section {
+    background: url(./images/bg-desktop-dark.jpg) top no-repeat;
+    background-size: 100vw 40vh;
 }
 
 header {
-    width: 20rem;
-    /*use min-width for larger screens*/
+    width: 100%;
+    margin-bottom: 3rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    color: hsl(0, 0%, 98%);
+    color: rgb(250, 250, 250);
     font-weight: 700;
 }
 
+.toggle-container {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+}
+
 .toggle-btn {
-    background: url(./images/icon-sun.svg) center no-repeat;
     width: 2.5rem;
     height: 2.5rem;
     border: none;
+    transition: 15ms all ease;
+}
+
+.toggle-light {
+    background: url(./images/icon-moon.svg) center no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 15ms all ease;
+}
+
+.toggle-dark {
+    background: url(./images/icon-sun.svg) center no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    transition: 15ms all ease;
+}
+
+.toggle-light-visibility {
+    visibility: hidden;
+}
+
+.toggle-dark-visibility {
+    visibility: visible;
 }
 
 form {
-    width: 20rem;
+    width: 100%;
     display: inline-flex;
     align-items: center;
     border-radius: 10px;
-    background: hsl(0, 0%, 98%);
-    /*padding: 0.8rem;
-    margin: 1rem 0rem;*/
+    background: var(--form-bg);
+    padding: 0.5rem;
+    margin-bottom: 1.6rem;
 }
 
 .todo-btn {
-    background: hsl(233, 11%, 84%);
-    height: 20px;
-    width: 20px;
+    background: var(--form-bg);
+    margin: 0.5rem;
+    height: 30px;
+    width: 30px;
+    border: 2px var(--btn-border) solid;
+    border-radius: 50%;
+    outline: none;
 }
 
-form input,
-form button {
-    color: hsl(236, 9%, 61%);
-    font-size: 2rem;
-    padding: 0.5rem;
+.todo-btn:hover {
+    border-color: var(--btn-border-hover);
+}
+
+form input {
+    width: 90%;
+    background: var(--form-bg);
+    color: var(--input-color);
+    font-size: 1.2rem;
+    padding: 1rem;
     border: none;
+    outline: none;
+}
+
+input::placeholder {
+    color: var(--input-color);
+}
+
+.todo-container {
+    width: 100%;
+    padding: 0rem 25rem;
+    margin-top: -3rem;
+    /*revisit*/
+}
+
+.todo-list,
+.todo-info {
+    background: var(--form-bg);
+}
+
+.todo-list {
+    color: var(--todoitem-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.todo {
+    border-bottom: 2px var(--todoitem-checked) solid;
+    width: 100%;
+    padding: 0.5rem;
+    color: var(--todoitem-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li {
+    list-style-type: none;
+}
+
+button.todo-btn.complete-btn.checked {
+    background-image: url(./images/icon-check.svg), linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.todo-item {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    color: var(--todoitem-color);
+    display: inline-flex;
+    justify-content: flex-start;
+    transition: 5ms all ease-in;
+}
+
+li.todo-item.completed {
+    text-decoration: line-through;
+    color: var(--todoitem-checked);
+}
+
+.btn-delete {
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background: url(./images/icon-cross.svg) center no-repeat;
+    color: var(--btn-border);
+}
+
+.todo-info {
+    width: 100%;
+    padding: 1rem;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--todoinfo-color);
+}
+
+.todo-completed {
+    border: none;
+    outline: none;
+    color: var(--todoinfo-color);
+    background: var(--form-bg);
+    font-weight: 400;
+}
+
+.states-container {
+    width: 100%;
+    padding: 2rem 25rem;
+}
+
+.states {
+    width: 100%;
+    padding: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--form-bg);
+    color: var(--todoinfo-color);
+    border-radius: 10px;
+}
+
+.state-btn {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--form-bg);
+    color: var(--todoinfo-color);
+    font-weight: 700;
+    border: none;
+    outline: none;
+}
+
+.state-btn:active {
+    color: hsl(220, 98%, 61%);
+}
+
+.active {
+    color: hsl(220, 98%, 61%);
+}
+
+
+/*MEDIAQUERIES*/
+
+@media (max-width: 1200px) {
+    .header-section {
+        padding: 4rem 17rem;
+    }
+    .todo-container {
+        padding: 0rem 17rem;
+    }
+    .states-container {
+        padding: 2rem 17rem
+    }
+}
+
+@media (max-width: 992px) {
+    .header-section {
+        padding: 4rem 10rem;
+    }
+    .todo-container {
+        padding: 0rem 10rem;
+    }
+    .states-container {
+        padding: 2rem 10rem
+    }
+}
+
+@media (max-width: 768px) {
+    .header-section {
+        padding: 4rem 4rem;
+    }
+    .todo-container {
+        padding: 0rem 4rem;
+    }
+    .states-container {
+        padding: 2rem 4rem
+    }
+}
+
+@media (max-width: 440px) {
+    .header-section {
+        padding: 4rem 2rem;
+        background: url(./images/bg-mobile-light.jpg) top no-repeat;
+        background-size: 100vw 40vh;
+    }
+    .dark-header-section {
+        background: url(./images/bg-mobile-dark.jpg) top no-repeat;
+        background-size: 100vw 40vh;
+    }
+    header {
+        margin-bottom: 1rem;
+    }
+    form {
+        margin-bottom: 0rem;
+    }
+    .todo-container {
+        padding: 0rem 2rem;
+    }
+    .states-container {
+        padding: 2rem 2rem
+    }
 }

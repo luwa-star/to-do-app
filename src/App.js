@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/header";
+
+import TodoWrapper from "./components/todowrapper";
 
 function App() {
   return (
     <div className="app">
-      <Header/>
+      <TodoWrapper/>
     </div>
   );
 }

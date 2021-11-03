@@ -4,11 +4,51 @@
     box-sizing: border-box;
 }
 
+
+/*Global variables*/
+
+:root {
+    --bg-color: hsl(236, 33%, 92%);
+    --dark-bg-color: hsl(235, 21%, 11%);
+}
+
+
+/*Local variables*/
+
+.light-theme {
+    background-color: var(--bg-color);
+    --form-bg: hsl(0, 0%, 98%);
+    /*form,todo-btn-todo-list &info,form input*/
+    --btn-border: hsl(236, 13%, 61%);
+    --btn-border-hover: hsl(233, 8%, 47%);
+    --input-color: hsl(236, 9%, 61%);
+    /*input and todo-bordercolor*/
+    --todoitem-color: hsl(235, 19%, 35%);
+    --todoitem-checked: hsl(236, 9%, 61%);
+    /*TODO BORDER BOTTOM*/
+    --todoinfo-color: hsl(236, 9%, 61%);
+    --toggle-icon: url(./images/icon-moon.svg);
+}
+
+.dark-theme {
+    background-color: var(--dark-bg-color);
+    --form-color: hsl(235, 24%, 19%);
+    --form-bg: hsl(235, 24%, 19%);
+    --btn-border: hsl(233, 14%, 35%);
+    --btn-border-hover: hsl(236, 33%, 92%);
+    --input-color: hsl(234, 39%, 85%);
+    --todoitem-color: hsl(236, 33%, 92%);
+    --todoitem-checked: hsl(237, 14%, 26%);
+    --todoinfo-color: hsl(234, 11%, 52%);
+    --toggle-icon: url(./images/icon-sun.svg);
+}
+
 body {
     font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.125rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: hsl(0, 0%, 98%);
+    background-color: var(--bg-color, --dark-bg-color);
 }
 
 code {
