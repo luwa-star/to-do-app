@@ -28,25 +28,25 @@ const TodoWrapper = () =>{
         }, []);//RENDER ONCE
           //Use effect
           useEffect(() =>{
-            filterHandler();
+            const filterHandler = () =>{
+                switch(status){
+                  case 'completed': 
+                  setFilteredTodo(todos.filter(todo => todo.completed === true));
+                  break;
+                  case 'active':
+                    setFilteredTodo(todos.filter(todo => todo.completed ===false));
+                    break;
+                    default:
+                      setFilteredTodo(todos);
+                      break;
+            
+                }
+              };
+              filterHandler();
             saveLocalTodo();
         
           }, [todos, status]); 
-    const filterHandler = () =>{
-            switch(status){
-              case 'completed': 
-              setFilteredTodo(todos.filter(todo => todo.completed === true));
-              break;
-              case 'active':
-                setFilteredTodo(todos.filter(todo => todo.completed ===false));
-                break;
-                default:
-                  setFilteredTodo(todos);
-                  break;
-        
-            }
-          };
-         
+              
     const saveLocalTodo = () =>{
           localStorage.setItem('todos', JSON.stringify([]));
            };
